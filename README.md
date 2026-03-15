@@ -102,3 +102,20 @@ adb install -r app/build/outputs/apk/release/app-release.apk
 
 - **MIUI/HyperOS**: часто нужно включить одновременно `USB debugging`, `USB debugging (Security settings)` и `Install via USB`.
 - **Рабочий/MDM-телефон**: установка может блокироваться политиками администратора. В этом случае нужен администратор устройства.
+
+## BAT-файл для сборки (Windows)
+
+Добавлен скрипт `build_apk.bat` в корне проекта.
+
+Примеры:
+
+```bat
+build_apk.bat
+build_apk.bat debug
+build_apk.bat release
+```
+
+Скрипт вызывает `gradlew.bat` и собирает:
+- debug: `app\build\outputs\apk\debug\app-debug.apk`
+- release: `app\build\outputs\apk\release\app-release.apk`
+
