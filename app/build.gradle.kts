@@ -22,13 +22,13 @@ android {
                 .get()
             storeFile = file(storePath)
             storePassword = providers.gradleProperty("SBASE_STORE_PASSWORD")
-                .orElse(System.getenv("SBASE_STORE_PASSWORD") ?: "")
+                .orElse(System.getenv("SBASE_STORE_PASSWORD") ?: "123456")
                 .get()
             keyAlias = providers.gradleProperty("SBASE_KEY_ALIAS")
                 .orElse("sbase")
                 .get()
             keyPassword = providers.gradleProperty("SBASE_KEY_PASSWORD")
-                .orElse(System.getenv("SBASE_KEY_PASSWORD") ?: "")
+                .orElse(System.getenv("SBASE_KEY_PASSWORD") ?: "123456")
                 .get()
         }
     }

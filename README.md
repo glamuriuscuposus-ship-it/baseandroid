@@ -29,11 +29,20 @@ keytool -genkeypair -v \
 
 ### 2) Добавить параметры подписи в `~/.gradle/gradle.properties`
 
+По умолчанию в проекте уже установлен путь к keystore:
+
+`C:/jajabinx/baseandroid-main/release-key.jks`
+
+Если сертификат лежит в другом месте — переопределите `SBASE_STORE_FILE`.
+
+По умолчанию в проекте пароль ключа и хранилища установлен как `123456` (можно переопределить через `SBASE_STORE_PASSWORD` и `SBASE_KEY_PASSWORD`).
+
+
 ```properties
 SBASE_STORE_FILE=/absolute/path/to/release-key.jks
-SBASE_STORE_PASSWORD=your_store_password
+SBASE_STORE_PASSWORD=123456
 SBASE_KEY_ALIAS=sbase
-SBASE_KEY_PASSWORD=your_key_password
+SBASE_KEY_PASSWORD=123456
 ```
 
 ### 3) Подключить signingConfig в `app/build.gradle.kts`
