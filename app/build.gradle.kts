@@ -15,9 +15,28 @@ android {
         versionName = "1.0"
     }
 
+    signingConfigs {
+        create("release") {
+            val storePath = providers.gradleProperty("SBASE_STORE_FILE")
+                .orElse("C:/jajabinx/baseandroid-main/release-key.jks")
+                .get()
+            storeFile = file(storePath)
+            storePassword = providers.gradleProperty("SBASE_STORE_PASSWORD")
+                .orElse(System.getenv("SBASE_STORE_PASSWORD") ?: "")
+                .get()
+            keyAlias = providers.gradleProperty("SBASE_KEY_ALIAS")
+                .orElse("sbase")
+                .get()
+            keyPassword = providers.gradleProperty("SBASE_KEY_PASSWORD")
+                .orElse(System.getenv("SBASE_KEY_PASSWORD") ?: "")
+                .get()
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
